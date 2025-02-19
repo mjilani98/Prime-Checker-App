@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    private IsPrime isPrime ;
     private AppInterface appinterface;
 
     @Override
@@ -21,8 +22,13 @@ public class MainActivity extends AppCompatActivity {
         //creating a button handler object
         ButtonHandler buttonHandler = new ButtonHandler();
 
+        //creating is prime object
+        isPrime = new IsPrime();
+
+        //creating an app interface object
         appinterface = new AppInterface(this ,buttonHandler);
 
+        //setting the screen
         setContentView(appinterface);
 
 
@@ -34,6 +40,22 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v)
         {
+            //getting the number from the screen
+            int number = appinterface.getNumber();
+
+            //sending the number to the model ,to decide weather the number is prime or not
+            isPrime.setNumber(number);
+
+            //string variable that will be determined based on if the number is prime or not
+            String message = "";
+
+            if(isPrime.getIsPrime())
+                message = "Prime number";
+            else
+                message = "Not prime number";
+
+            //sending the message back to the screen
+            appinterface.setMessage(message);
 
 
         }

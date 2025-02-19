@@ -4,12 +4,12 @@ public class IsPrime {
 
     private int number;
 
-    public IsPrime(int n)
+    public void setNumber(int n)
     {
         this.number = n;
     }
 
-    public boolean isPrime()
+    public boolean getIsPrime()
     {
         if (number <= 1) {
             return false; // Numbers less than or equal to 1 are not prime
